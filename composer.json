@@ -1,0 +1,27 @@
+{
+    "name": "lizhineng/snowflake",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Li Zhineng",
+            "email": "im@zhineng.li"
+        }
+    ],
+    "require": {
+        "php": "^8.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9"
+    },
+    "autoload": {
+        "psr-4": {
+            "Zhineng\\Snowflake\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Zhineng\\Snowflake\\Tests\\": "tests"
+        }
+    }
+}
