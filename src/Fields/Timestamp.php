@@ -23,6 +23,11 @@ class Timestamp extends Field
         return intval(microtime(true) * 1000);
     }
 
+    public function retrieve(int $snowflake): int
+    {
+        return parent::retrieve($snowflake) + $this->epoch();
+    }
+
     public function value(): int
     {
         return $this->now() - $this->epoch();

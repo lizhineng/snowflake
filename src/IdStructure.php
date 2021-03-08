@@ -6,17 +6,29 @@ use Zhineng\Snowflake\Fields\Field;
 
 class IdStructure
 {
-    protected array $format = [];
+    protected array $composition = [];
 
     public function add(Field $field): self
     {
-        $this->format[] = $field;
+        $this->composition[] = $field;
 
         return $this;
     }
 
-    public function format(): array
+    public function composition(): array
     {
-        return $this->format;
+        return $this->composition;
+    }
+
+    public function calculateOffset(): self
+    {
+        $offset = 0;
+
+        foreach (array_reverse($this->composition()) as $field) {
+            $field->setOffset($offset);
+            $offset += $field->bits();
+        }
+
+        return $this;
     }
 }

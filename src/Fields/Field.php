@@ -3,10 +3,13 @@
 namespace Zhineng\Snowflake\Fields;
 
 use InvalidArgumentException;
+use RuntimeException;
 
 class Field
 {
     protected int $max = -1;
+
+    protected int $offset = -1;
 
     public function __construct(
         protected string $name,
@@ -37,14 +40,35 @@ class Field
         return $this->max;
     }
 
-    protected function pureValue(): int
+    public function offset(): int
     {
-        return $this->value;
+        if ($this->offset === -1) {
+            throw new RuntimeException("The {$this->name()} field is missing offset value.");
+        }
+
+        return $this->offset;
+    }
+
+    public function setOffset(int $offset): self
+    {
+        $this->offset = $offset;
+
+        return $this;
+    }
+
+    public function retrieve(int $snowflake): int
+    {
+        return ($snowflake & $this->max() << $this->offset()) >> $this->offset();
     }
 
     public function value(): int
     {
         return $this->pureValue();
+    }
+
+    protected function pureValue(): int
+    {
+        return $this->value;
     }
 
     protected function initialize(): void
