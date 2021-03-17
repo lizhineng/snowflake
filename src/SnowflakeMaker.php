@@ -30,7 +30,12 @@ class SnowflakeMaker
         return new Snowflake($data);
     }
 
-    public function nextId(): Snowflake
+    public function nextId(): int
+    {
+        return $this->nextSnowflake()->id;
+    }
+
+    public function nextSnowflake(): Snowflake
     {
         $data = ['id' => 0];
 
