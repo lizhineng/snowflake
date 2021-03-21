@@ -33,7 +33,7 @@ class SnowflakeMakerTest extends TestCase
 
     public function testGenerateId()
     {
-        $this->assertInstanceOf(Snowflake::class, $snowflake = $this->maker->nextSnowflake());
+        $this->assertInstanceOf(Snowflake::class, $snowflake = $this->maker->next());
         $parsed = $this->maker->parse($snowflake);
         $this->assertSame($snowflake->id, $parsed->id);
         $this->assertSame($snowflake->timestamp + $this->epoch, $parsed->timestamp);

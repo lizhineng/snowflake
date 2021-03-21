@@ -32,10 +32,10 @@ class SnowflakeMaker
 
     public function nextId(): int
     {
-        return $this->nextSnowflake()->id;
+        return $this->next()->id;
     }
 
-    public function nextSnowflake(): Snowflake
+    public function next(): Snowflake
     {
         $data = ['id' => 0];
 
