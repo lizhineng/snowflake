@@ -11,7 +11,8 @@ class Snowflake implements Stringable
 {
     public function __construct(
         protected array $data = []
-    ) {}
+    ) {
+    }
 
     public function __get(string $name)
     {
