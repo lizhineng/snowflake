@@ -15,8 +15,7 @@ class Field
         protected string $name,
         protected int $bits,
         protected int $value = 0
-    )
-    {
+    ) {
         $this->initialize();
     }
 

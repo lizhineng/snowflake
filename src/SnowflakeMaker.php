@@ -13,11 +13,11 @@ class SnowflakeMaker
         return $this;
     }
 
-    public function parse(Snowflake|string|int $snowflake): Snowflake
+    public function parse(Snowflake | string | int $snowflake): Snowflake
     {
         if ($snowflake instanceof Snowflake) {
             $snowflake = $snowflake->id;
-        } else if (is_string($snowflake)) {
+        } elseif (is_string($snowflake)) {
             $snowflake = (int) $snowflake;
         }
 
